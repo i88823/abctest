@@ -101,7 +101,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://i88823.github.io/2018/12/15/hello-world/" data-id="cjpqu4avi0000m8bmm00rvyf3" class="article-share-link">Share</a>
+      <a data-url="https://i88823.github.io/2018/12/15/hello-world/" data-id="cjpqueuuh0000akbm80npqdmb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,7 +219,75 @@ httpd: /usr/sbin/httpd /usr/lib64/httpd /etc/httpd /usr/share/httpd /usr/share/m
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://i88823.github.io/2018/12/04/httpd编译安装的方式/" data-id="cjpqu4ax00001m8bmtqx0mpv5" class="article-share-link">Share</a>
+      <a data-url="https://i88823.github.io/2018/12/04/httpd编译安装的方式/" data-id="cjpqueuw10001akbmexorltoz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ubuntu LAMP下搭建wordpress" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/04/Ubuntu LAMP下搭建wordpress/" class="article-date">
+  <time datetime="2018-12-04T03:05:51.000Z" itemprop="datePublished">2018-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/04/Ubuntu LAMP下搭建wordpress/">Ubuntu LAMP下搭建wordpress</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="准备-LAMP-环境"><a href="#准备-LAMP-环境" class="headerlink" title="准备 LAMP 环境"></a>准备 LAMP 环境</h4><p>=================</p>
+<h5 id="LAMP动态网站部署架构是一套由Linux-Apache-MySQL-PHP组成的动态网站系统解决方案，具有免费、高效、扩展性强且资源消耗低等优良特性。"><a href="#LAMP动态网站部署架构是一套由Linux-Apache-MySQL-PHP组成的动态网站系统解决方案，具有免费、高效、扩展性强且资源消耗低等优良特性。" class="headerlink" title="LAMP动态网站部署架构是一套由Linux + Apache + MySQL + PHP组成的动态网站系统解决方案，具有免费、高效、扩展性强且资源消耗低等优良特性。"></a>LAMP动态网站部署架构是一套由Linux + Apache + MySQL + PHP组成的动态网站系统解决方案，具有免费、高效、扩展性强且资源消耗低等优良特性。</h5><h5 id="1-安装-Apache2"><a href="#1-安装-Apache2" class="headerlink" title="1.安装 Apache2"></a>1.安装 Apache2</h5><hr>
+<pre><code>apt-get install apache2 -y
+</code></pre><h5 id="2-安装-PHP-组件"><a href="#2-安装-PHP-组件" class="headerlink" title="2.安装 PHP 组件"></a>2.安装 PHP 组件</h5><hr>
+<pre><code>apt-get install php7.0 -y
+</code></pre><h5 id="安装-php-相关组件"><a href="#安装-php-相关组件" class="headerlink" title="安装 php 相关组件:"></a>安装 php 相关组件:</h5><pre><code>apt-get install libapache2-mod-php7.0
+</code></pre><h5 id="3-安装-MySQL-服务"><a href="#3-安装-MySQL-服务" class="headerlink" title="3.安装 MySQL 服务"></a>3.安装 MySQL 服务</h5><hr>
+<pre><code>apt-get install mysql-client mysql-server
+</code></pre><h5 id="4-重启-MySQL-服务和-Apache-服务"><a href="#4-重启-MySQL-服务和-Apache-服务" class="headerlink" title="4.重启 MySQL 服务和 Apache 服务"></a>4.重启 MySQL 服务和 Apache 服务</h5><hr>
+<pre><code>sudo service mysql restart
+</code></pre><h5 id="5-wordpress网站文件放置"><a href="#5-wordpress网站文件放置" class="headerlink" title="5.wordpress网站文件放置"></a>5.wordpress网站文件放置</h5><hr>
+<h5 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h5><pre><code>wget https://wordpress.org/latest.tar.gz
+</code></pre><h5 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h5><pre><code>tar -xvf latest.tar.gz
+</code></pre><h5 id="移动源码到网站的根目录"><a href="#移动源码到网站的根目录" class="headerlink" title="移动源码到网站的根目录"></a>移动源码到网站的根目录</h5><pre><code>mv wordpress /var/www/html/
+</code></pre><h5 id="6-更改根目录权限"><a href="#6-更改根目录权限" class="headerlink" title="6.更改根目录权限"></a>6.更改根目录权限</h5><hr>
+<pre><code>chmod -R 777 /var/www/html/wordpress/
+</code></pre><h5 id="7-为-wordpress-配置一个数据库"><a href="#7-为-wordpress-配置一个数据库" class="headerlink" title="7.为 wordpress 配置一个数据库"></a>7.为 wordpress 配置一个数据库</h5><hr>
+<h5 id="进入-mysql，输入以下代码后，按提示输入您MySQL密码"><a href="#进入-mysql，输入以下代码后，按提示输入您MySQL密码" class="headerlink" title="进入 mysql，输入以下代码后，按提示输入您MySQL密码:"></a>进入 mysql，输入以下代码后，按提示输入您MySQL密码:</h5><pre><code>mysql -u root -p
+</code></pre><h5 id="输入密码"><a href="#输入密码" class="headerlink" title="输入密码"></a>输入密码</h5><pre><code>show databases; 查看数据库
+create database wordpress;
+show databases;
+quit; 退出
+</code></pre><h5 id="浏览器访问wordpress配置"><a href="#浏览器访问wordpress配置" class="headerlink" title="浏览器访问wordpress配置"></a>浏览器访问wordpress配置</h5><h5 id="http-服务器ip-wordpress"><a href="#http-服务器ip-wordpress" class="headerlink" title="http://服务器ip/wordpress/"></a>http://服务器ip/wordpress/</h5><h5 id="如果密码错误就改密码"><a href="#如果密码错误就改密码" class="headerlink" title="如果密码错误就改密码"></a>如果密码错误就改密码</h5><h5 id="修改mysql密码"><a href="#修改mysql密码" class="headerlink" title="修改mysql密码"></a>修改mysql密码</h5><pre><code>service mysql stop
+mkdir -p /var/run/mysqld
+chown mysql:mysql /var/run/mysqld
+/usr/bin/mysqld_safe –skip-grant-tables –skip-networking
+</code></pre><h5 id="开启新终端"><a href="#开启新终端" class="headerlink" title="开启新终端"></a>开启新终端</h5><pre><code>masql -u root
+use mayql;
+update user set authentication_string=PASSWORD(“这里是要改的密码”) where user=’root’;
+update user set plugin=”mysql_native_password”;
+flush privileges;
+exit
+</code></pre><h5 id="进入http-服务器ip-wordpress-修改配置"><a href="#进入http-服务器ip-wordpress-修改配置" class="headerlink" title="进入http://服务器ip/wordpress/ 修改配置"></a>进入http://服务器ip/wordpress/ 修改配置</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://i88823.github.io/2018/12/04/Ubuntu LAMP下搭建wordpress/" data-id="cjpqutj8e0002akbmszbs9tjt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,6 +333,10 @@ httpd: /usr/sbin/httpd /usr/lib64/httpd /etc/httpd /usr/share/httpd /usr/share/m
         
           <li>
             <a href="/2018/12/04/httpd编译安装的方式/">httpd编译安装的方式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/04/Ubuntu LAMP下搭建wordpress/">Ubuntu LAMP下搭建wordpress</a>
           </li>
         
       </ul>
